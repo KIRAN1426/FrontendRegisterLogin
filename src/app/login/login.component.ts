@@ -28,26 +28,29 @@ export class LoginComponent
    password : this.password,
  };
      
-   this.http.post("http://localhost:8081/boot/login", bodyData).subscribe( (resultData: any)=>{
-     console.log(resultData); 
+  this.http.post("http://localhost:8080/login", bodyData).subscribe( (resultData: any)=>{
+   console.log(); 
 
-    if (resultData.message == "Email not exists")
-      {
-          alert("Email not exist");
-      }
+     if ( "Email exists")
+       {
+           alert("Email exist");
+       }
       
-        else if(resultData.message == "login Success")
-          {
-            this.router.navigateByUrl('/home');
-          }
-        else
-        {
+         else if("login Success")
+           {
+           this.router.navigateByUrl('/home');
+           }        else
+       {
          alert("Incorrect Email and password not Match");
+
+       console.log("Error login");
             }
   
- });
+  });
 }
 
 }
+
+
 
 
